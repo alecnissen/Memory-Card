@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import './App.css';
+import HeaderText from './Header';
+import CardComponent from './CardComponent';
 
-function App() {
+function App() { 
+
+  
+
+
   return (
     <>
-  <h1>Hello Memory Card</h1>
+      <HeaderText></HeaderText>
+      <CardComponent></CardComponent>
     </>
-  )
+  );
 }
 
 export default App;
