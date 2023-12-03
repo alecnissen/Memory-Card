@@ -4,7 +4,6 @@
 // use grid 
 
 // *** 
-// ask aprudess about bootstrap themes, 
 
 // can now access a card! 
 // use that 42 card deck, I dont see an option for full deck? 
