@@ -13,37 +13,46 @@ function App() {
   let arrCopy = [...data];
   console.log('arrCopy', arrCopy);
 
-    useEffect(() => { 
-        axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
-          console.log(resp);
-          let code = resp.data.cards;
-          console.log(code);
-            let cards = resp.data.cards;
-            // we got the cards, lets map through them and add them to the array
-            console.log('resp.data console.log', resp.data);
-            console.log('cards console.log', cards);
+  useEffect(() => { 
+    async function getCards() { 
+      await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
+      setData(resp.data.cards)
+    });
+    }
+    getCards();
+  }, []);
+
+    // useEffect(() => { 
+    //     axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
+    //       console.log(resp);
+    //       console.log(code);
+    //         let cards = resp.data.cards;
+    //         // we got the cards, lets map through them and add them to the array
+    //         console.log('resp.data console.log', resp.data);
+    //         console.log('cards console.log', cards);
 
 
-              cards.map(card => {
-              let cardImg = card.image;
-              console.log(cardImg);
-              setData([...data, cardImg]);
-              console.log('data after set', data);
-            });
-        });
-    }, []);
+    //           cards.map(card => {
+    //           let cardImg = card.image;
+    //           // cardImg.id = crypto.randomUUID();
+    //           console.log(cardImg);
+    //           setData([...data, cardImg]);
+    //           console.log('data after set', data);
+    //         });
+    //     });
+    // }, []);
   
 
   return (
     <>
       <HeaderText></HeaderText>
       {/* <img width={200} src={data} /> */}
-      <div key={crypto.randomUUID()}>
-        {data.map((item) => {
-          console.log('logs img url', data);
-          <img src={item} width={100} />;
+      {data.map((item) => { 
+        console.log('item log within return map', item);
+        return <div key={item.code}> 
+        <img src={item.image} />
+        </div>
       })}
-      </div>
     </>
   );
 }

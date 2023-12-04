@@ -29,3 +29,13 @@
 // make the fetch function get the images, 
 // display one, 
 // call it within app for now
+
+
+// correctly structure the data. handle error and loading as well, 
+// see if you can pass the cards as props into card component 
+
+// *** STRUCTURING OUR CODE
+// we have a made a function which can render 10 cards to the screen
+// try not to use all of this within app. 
+// send the updated state data to card component then use the same mapping process for rendering
+// 
