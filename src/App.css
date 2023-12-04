@@ -36,10 +36,27 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1em;
-} 
+}  
 
-.card-container { 
+.main-card-container { 
+  margin: 0 auto;
+  max-width: 80em;
+}
+
+
+.cards-container { 
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
   width: 100%;
+  gap: 1em;
+  padding: 1em;
+} 
+
+.error-styles, 
+.loading-styles { 
+  color: rgb(160, 41, 41);
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  text-decoration: underline;
 }

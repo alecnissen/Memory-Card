@@ -39,3 +39,33 @@
 // try not to use all of this within app. 
 // send the updated state data to card component then use the same mapping process for rendering
 // 
+
+
+// props are working ok 
+
+
+// *** error handling in axios, 
+// I can make an api call which will render 10 cards to the screen,
+
+// I now want to account for errors and loading. 
+// I have tried to put a try block within the getCards async function, but 
+// it will not let me, 
+// I tried putting the try around the function innovation getCards 
+// then used a catch block, 
+
+// it still rendered the cards but if I purposly mess up the url, 
+// it never hits the catch block, 
+
+// the problem probably is the catch block is not within the async call, 
+// but every time I attempt to try block in there, I get an error. 
+
+// what is going on here, I have looked at axios docs and they put the try 
+// around the API call, 
+
+// Looks like all the error blocks except one are hit, 
+// the block in question is hit but it just crashes the page, 
+// still shows the error in the console 
+
+// https error shows, invalid protocal, 
+// 404 error, 
+// loading screen, 
