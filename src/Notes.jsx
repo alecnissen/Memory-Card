@@ -69,3 +69,68 @@
 // https error shows, invalid protocal, 
 // 404 error, 
 // loading screen, 
+
+// *** begin working game logic, 
+// user clicks a card, that will become the selected card 
+// after each time a card is clicked, re-shuffle the cards and check if the card clicked 
+// matches the selected card, 
+// keep playing the game until user clicked their selected card, 
+// stop the game, render the losing screen, with a btn is restart and select how many cards 
+// you want for the next game, 
+
+// first add an onClick to each card, see if you can console log, something back, 
+// the more I think, I don't think you even need the card component, this can be handled within app.jsx 
+// I think the game logic can all be in app.jsx
+// play around with it, bring the map back in the return, 
+// jsut copy the return in card and put it back into app 
+
+// keep the card map within app for now, 
+// next can we init a selected card variable or state variable, once clicked, it will return back the selected card
+
+// can we call a function which runs when a card is clicked, 
+// once card is clicked, call a function which re-shuffles the deck, but it still includes the card you clicked on
+// THEN ONCE YOU RE-SHUFFLE THE DECK, CHECK FOR YOUR CARD, 
+
+// can you make a function that re-shuffles the deck when card is clicked, 
+
+
+// the selected card variable always points the previously selected card,
+
+// once card is clicked, selectedCard variable is updated, 
+//then call a function which makes another fetch request to include a new set of 10 cards, 
+// BUT THAT SET MUST INCLUDE YOUR CARD!! 
+
+// MAKE ANOTHER FUNCTION WHICH MAKES ANOTHER SET OF 10 CARDS,
+
+// I need to think of a plan on how to begin the game logic, 
+// how can  
+
+
+// ** Create a function, which selects the clicked on card, 
+// removes that card from the array, 
+
+// I can select the current card, which returns just the url of the img, 
+// I can also map through my card array (data) 
+// now I am trying to use a conditional to check if the card clicked on, 
+// matches the selected card within the clickedCard function, 
+
+// DETERMINE THE CLICKED ON CARD, 
+// RESHUFFLE THE CARDS DON'T GENERATE NEW ONES, JUST RE-SHUFFLE THEM
+// DETERMINE IF YOU CLICKED ON THE SELECTED CARD, END THE GAME IF SO
+
+// *** 
+
+// WE HAVE THE SELECTED CARD, WE HAVE THE SHUFFLED DECK IN THE CONSOLE 
+// WE CAN DETERMINE IF WE SELECTED THE CLICKED ON CARD FROM THE ARRAY, IT LOGS A MSG 
+// NOW WHEN USER CLICKS A CARD, HOW CAN WE SHOW THAT SHUFFLED DECK IN THE DOM???
+
+// HOW CAN WE SHOW THE SHUFFLED DECK IN THE DOM?
+
+// clickedCard function 
+
+// we can select a card, which determines which one was clicked on 
+// we can shuffle the cards, 
+// we have a conditional which checks, if we clicked the selected card, 
+// 
+
+// we have the shuffled new deck, how can we display that? 
