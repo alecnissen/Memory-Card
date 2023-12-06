@@ -144,3 +144,22 @@
 
 
 
+// **** 
+// find a method to display a msg when the same card is clicked twice, 
+// play around, and check behavior 
+
+// it seems like whatever card you click on can change, 
+// check the selected card variable, and how it changes, 
+// we need to set the selected card variable, 
+// but also have another state variable that holds all the cards that were clicked on. 
+
+// two state variables, 
+
+// *** 
+// one that holds the single selected card, WHICH CANNOT CHANGE. 
+// ANOTHER VARIABLE WHICH HOLDS ALL THE CLICKED ON CARDS IN AN ARRAY, 
+// THEN CHECK IF THE CARD IS ALREADY IN THERE. 
+
+// JUST MAKE SURE THAT CARD DOES NOT CHANGE. 
+
+

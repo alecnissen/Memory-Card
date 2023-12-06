@@ -57,8 +57,19 @@ function App() {
   function clickedCard(card) {
     let selectedCard = card;
 
+    // setting state of whatever card was clicked on. 
+    setClickedCards([...clickedCards, selectedCard]);
 
+    console.log(clickedCards);
 
+    // if the clicked cards array contains the same card you clicked, game over and print message, 
+
+    if (clickedCards.includes(selectedCard)) {
+      // console.log('You clicked the same card twice');
+      alert('YOU CLICKED THE SAME CARD TWICE');
+    }
+
+    
     // saving selected card into state, 
     // then checking if that card appears twice in state, 
 
