@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // console.log('data before set', data);
+  console.log('data before set', data);
 
   useEffect(() => {
       // old async function without error handling, 
@@ -82,7 +82,9 @@ function App() {
 
     console.log('clicked on card', selectedCard);
 
-    let shuffled = data.sort(() => Math.random() - 0.5);
+    console.log('before the shuffle', data);
+
+    let shuffled = [...data].slice().sort(() => Math.random() - 0.5);
 
     console.log('the shuffled card deck', shuffled);
 
@@ -94,8 +96,6 @@ function App() {
      console.log(card.image);
       if (card.image === selectedCard) {
         console.log('found the matching card');
-        // alert('Game over! Play again? ')
-        // setData(data.filter((item) => item.image !== selectedCard));
       }
     });
 
@@ -114,7 +114,7 @@ function App() {
             // console.log('item log within return map', item);
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
-            console.log('the card we clicked on', e.target.src);
+                    console.log('the card we clicked on', e.target.src);
       // setSelectedCard(e.target);
 
                     clickedCard(e.target.src);

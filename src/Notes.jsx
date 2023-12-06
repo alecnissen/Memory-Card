@@ -134,3 +134,13 @@
 // 
 
 // we have the shuffled new deck, how can we display that? 
+
+
+// *** card shuffling is working, 
+// review changes, and commit, 
+// then begin the process of determining if you clicked the same card twice, 
+
+// if you did, have a component render or just some text on the screen display a msg.
+
+
+
