@@ -9,17 +9,11 @@ function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [clickedCards, setClickedCards] = useState([]);
 
   console.log('data before set', data);
 
   useEffect(() => {
-      // old async function without error handling, 
-    // async function getCards() {
-    //   await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
-    //   setData(resp.data.cards);
-    // },);
-    //   }
-    //   getCards()
 
     // new async function with error handling,
     const getCards = async () => {
@@ -60,31 +54,23 @@ function App() {
     getCards();
   }, []);
 
-  // useEffect(() => { 
-  //   // async function getCards() {
-  //   //   await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
-  //   //   setData(resp.data.cards);
-  //   // },);
-  //   async function reshuffleCards() { 
-  //        await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
-  //         setData(resp.data.cards);
-  //   });
-  //   }
-  //   reshuffleCards();
-  // }, []);
-
-  // function reshuffleCards() { 
-  //   getCards();
-  // }
-
   function clickedCard(card) {
     let selectedCard = card;
+
+
+
+    // saving selected card into state, 
+    // then checking if that card appears twice in state, 
+
+    // selectedCard.onClick((e) => {
+    //   console.log('found the selected card');
+    // });
 
     console.log('clicked on card', selectedCard);
 
     console.log('before the shuffle', data);
 
-    let shuffled = [...data].slice().sort(() => Math.random() - 0.5);
+    let shuffled = data.slice().sort(() => Math.random() - 0.5);
 
     console.log('the shuffled card deck', shuffled);
 
@@ -92,31 +78,23 @@ function App() {
 
     console.log('card array, after updating the state', data); 
 
-    data.map((card) => {
+    shuffled.map((card) => {
      console.log(card.image);
-      if (card.image === selectedCard) {
-        console.log('found the matching card');
-      }
-    });
 
-    // return shuffled;
+    });
   }
 
 
   return (
     <>
       <HeaderText></HeaderText>
-      {/* <CardComponent data={data}></CardComponent> */} 
       <div className="main-card-container"> 
 
         <div className="cards-container"> 
           {data.map((item) => {
-            // console.log('item log within return map', item);
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
                     console.log('the card we clicked on', e.target.src);
-      // setSelectedCard(e.target);
-
                     clickedCard(e.target.src);
 
         })} />
