@@ -13,7 +13,10 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   // the single selected card, the users choice, if this card is clicked twice game over. 
   // const [userPick, setUserPick] = useRef();
-  let [hasUserLost, setHasUserLost] = useState(false);
+  const [hasUserLost, setHasUserLost] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
 
 
   // this will get printed when the game is over, 
@@ -112,6 +115,10 @@ function App() {
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
                     clickedCard(e.target.src);
+
+                    setCurrentScore(currentScore + 1);
+
+                    <HeaderText currentScore={currentScore}></HeaderText>;
 
                     if (clickedCards.includes(e.target.src)) {
                       setHasUserLost(true);

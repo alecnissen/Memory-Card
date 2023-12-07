@@ -203,3 +203,12 @@
 
 
 // commit changes, then begin working on score logic, 
+
+// *********************************************
+
+// *** keeping track of score, 
+// when would the score variables increment? 
+// whenever the user does not click any card more than once, 
+// so within the img tag, outside of the if increment the count, 
+
+// start with init a currentScore and best score state variables, 
