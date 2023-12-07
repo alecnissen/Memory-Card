@@ -212,3 +212,8 @@
 // so within the img tag, outside of the if increment the count, 
 
 // start with init a currentScore and best score state variables, 
+
+
+// reset the score, when game is over, but set whatever score you got for current and make that the best score. 
+
+// 

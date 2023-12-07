@@ -4,7 +4,7 @@ import React from "react";
 
 // make a function which includes title and subtitle which includes directions, 
 
-export default function HeaderText({ currentScore }) { 
+export default function HeaderText({ currentScore, bestScore }) { 
     return ( 
         <> 
         <div className="header-container">
@@ -15,7 +15,7 @@ export default function HeaderText({ currentScore }) {
 
         <div className="header-score-container">
         <h5>Current Score: {currentScore}</h5>
-        <h5>Highest Score:</h5>
+        <h5>Highest Score: {bestScore}</h5>
         </div>
 
 

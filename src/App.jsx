@@ -107,7 +107,7 @@ function App() {
 
   return (
     <>
-      <HeaderText></HeaderText>
+      <HeaderText currentScore={currentScore} bestScore={bestScore}></HeaderText>
       <div className="main-card-container"> 
 
         <div className="cards-container"> 
@@ -118,14 +118,18 @@ function App() {
 
                     setCurrentScore(currentScore + 1);
 
-                    <HeaderText currentScore={currentScore}></HeaderText>;
-
                     if (clickedCards.includes(e.target.src)) {
                       setHasUserLost(true);
+
+                      setCurrentScore(0);
           
                       let cardContainer = document.getElementsByClassName('cards-container')[0];
                       cardContainer.remove();
                     }
+
+                    if (currentScore > bestScore) {
+                      setBestScore(currentScore);
+                    } 
 
         }
         )
