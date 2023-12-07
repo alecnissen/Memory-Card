@@ -13,7 +13,20 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   // the single selected card, the users choice, if this card is clicked twice game over. 
   // const [userPick, setUserPick] = useRef();
-  let usersPick;
+  let [hasUserLost, setHasUserLost] = useState(false);
+
+
+  // this will get printed when the game is over, 
+  let losingComponent = () => {
+    return (
+      <>
+     <h1>Game Over, Play Again?</h1> 
+     <label>How many cards for next game?</label>
+     <input type="number" min="0" max="52"/>
+     <button>Restart </button>
+     </>
+   );
+   };
 
   console.log('data before set', data);
 
@@ -83,9 +96,10 @@ function App() {
     //   if (clickedCards)
     // })
 
-    if (clickedCards.includes(selectedCard)) {
-      alert('you clicked a duplicate card!');
-    }
+    // if (clickedCards.includes(selectedCard)) {
+    //   alert('you clicked a duplicate card!');
+    //   // losingMsg = 'Game Over! Play again?';
+    // }
   }
 
   return (
@@ -97,12 +111,19 @@ function App() {
           {data.map((item) => {
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
-                    console.log('the card we clicked on', e.target.src);
-
-                    // usersPick = e.target.src;
                     clickedCard(e.target.src);
 
-        })} />
+                    if (clickedCards.includes(e.target.src)) {
+                      setHasUserLost(true);
+          
+                      let cardContainer = document.getElementsByClassName('cards-container')[0];
+                      cardContainer.remove();
+                    }
+
+        }
+        )
+        } 
+        />
               </div>
       })}
 
@@ -112,8 +133,12 @@ function App() {
 
       {<div className="error-styles">{error}</div>}
       {loading && <h1 className="loading-styles">Loading...</h1>}
+      {<div className="losing-msg-container">
+        
+          {hasUserLost && losingComponent()}
 
-
+        </div>
+      }
     </>
   );
 }

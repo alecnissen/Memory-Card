@@ -53,7 +53,8 @@ body {
 } 
 
 .error-styles, 
-.loading-styles { 
+.loading-styles,
+.losing-msg-container { 
   color: rgb(160, 41, 41);
   font-weight: bold;
   text-align: center;

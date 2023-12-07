@@ -183,3 +183,23 @@
 // I am also thinking that I need to remove the function and handle this logic within the cards onClick, 
 // do I really need a function to do this, 
 // the function can only be used to shuffle the deck, 
+
+// find a way to print a message when the duplicate card is hit. 
+
+
+// *** 
+// the goal for today is to print the losing message with a restart btn and an input to select how many cards for the next round. 
+// Will this be a component that I am returning???? 
+// or just returning an input with some text, 
+// we need to experiment to see how this works. 
+
+// try to return a component, when game is over, 
+// what would the component include? 
+// a message, 
+// a restart btn, 
+// an input to select a number of cards for the next round, 
+// try it, 
+// 
+
+
+// commit changes, then begin working on score logic, 
