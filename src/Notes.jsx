@@ -162,4 +162,24 @@
 
 // JUST MAKE SURE THAT CARD DOES NOT CHANGE. 
 
+// does the state need to be set right away ? 
 
+
+//
+
+// *** trying to set a individual card state variable, which will not change, 
+// then an array of clicked on cards. 
+
+
+// clickedOnCards array is working correctly, its adding whatever cards are clicked on.
+// Just find a way to have the pickedCard variable STAY THE SAME, IT CANNOT BE UPDATED. 
+
+// Pretty sure this is working, 
+// now I need to implement the score features. 
+// when card is clicked update the score. 
+
+// *** game over conditional in effect! 
+// now keep track of the score, as long as user does not click a card morethan once, points will increment. 
+// I am also thinking that I need to remove the function and handle this logic within the cards onClick, 
+// do I really need a function to do this, 
+// the function can only be used to shuffle the deck, 

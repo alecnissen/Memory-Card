@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import HeaderText from './Header';
 import CardComponent from './CardComponent';
@@ -9,7 +9,11 @@ function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  // the clicked on cards array
   const [clickedCards, setClickedCards] = useState([]);
+  // the single selected card, the users choice, if this card is clicked twice game over. 
+  // const [userPick, setUserPick] = useRef();
+  let usersPick;
 
   console.log('data before set', data);
 
@@ -57,44 +61,32 @@ function App() {
   function clickedCard(card) {
     let selectedCard = card;
 
-    // setting state of whatever card was clicked on. 
+    // let usersSingleCard = usersPick;
+
+    // setting state of whatever card was clicked on. Adding clicked cards to the array, 
     setClickedCards([...clickedCards, selectedCard]);
 
-    console.log(clickedCards);
+    console.log('THE CLICKED ON CARDS ARRAY,', clickedCards);
 
     // if the clicked cards array contains the same card you clicked, game over and print message, 
 
-    if (clickedCards.includes(selectedCard)) {
-      // console.log('You clicked the same card twice');
-      alert('YOU CLICKED THE SAME CARD TWICE');
-    }
-
-    
-    // saving selected card into state, 
-    // then checking if that card appears twice in state, 
-
-    // selectedCard.onClick((e) => {
-    //   console.log('found the selected card');
-    // });
-
-    console.log('clicked on card', selectedCard);
-
-    console.log('before the shuffle', data);
+    // if (clickedCards.includes(usersPick)) {
+    //   // console.log('You clicked the same card twice');
+    //   alert('YOU CLICKED THE SAME CARD TWICE');
+    // }
 
     let shuffled = data.slice().sort(() => Math.random() - 0.5);
 
-    console.log('the shuffled card deck', shuffled);
-
     setData(shuffled);
 
-    console.log('card array, after updating the state', data); 
+    // clickedCards.map((card) => { 
+    //   if (clickedCards)
+    // })
 
-    shuffled.map((card) => {
-     console.log(card.image);
-
-    });
+    if (clickedCards.includes(selectedCard)) {
+      alert('you clicked a duplicate card!');
+    }
   }
-
 
   return (
     <>
@@ -106,10 +98,12 @@ function App() {
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
                     console.log('the card we clicked on', e.target.src);
+
+                    // usersPick = e.target.src;
                     clickedCard(e.target.src);
 
         })} />
-        </div>
+              </div>
       })}
 
 
