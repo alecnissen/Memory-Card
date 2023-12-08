@@ -77,7 +77,7 @@ function App() {
   function clickedCard(card) {
     let selectedCard = card;
 
-    // let usersSingleCard = usersPick;
+    // let usersSingleCard = usersPick; 
 
     // setting state of whatever card was clicked on. Adding clicked cards to the array, 
     setClickedCards([...clickedCards, selectedCard]);
@@ -95,7 +95,22 @@ function App() {
 
     setData(shuffled);
 
-    // clickedCards.map((card) => { 
+
+    if (clickedCards.includes(selectedCard)) {
+      setHasUserLost(true);
+
+      setCurrentScore(0);
+
+      let cardContainer = document.getElementsByClassName('cards-container')[0];
+      cardContainer.remove();
+    }
+
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+
+
+    // clickedCards.map((card) => {
     //   if (clickedCards)
     // })
 
@@ -118,18 +133,25 @@ function App() {
 
                     setCurrentScore(currentScore + 1);
 
-                    if (clickedCards.includes(e.target.src)) {
-                      setHasUserLost(true);
+                    const newScore = currentScore + 1 
 
-                      setCurrentScore(0);
+                    setCurrentScore(newScore);
+
+                    setBestScore(newScore)
+
+
+                    // if (clickedCards.includes(e.target.src)) {
+                    //   setHasUserLost(true);
+
+                    //   setCurrentScore(0);
           
-                      let cardContainer = document.getElementsByClassName('cards-container')[0];
-                      cardContainer.remove();
-                    }
+                    //   let cardContainer = document.getElementsByClassName('cards-container')[0];
+                    //   cardContainer.remove();
+                    // }
 
-                    if (currentScore > bestScore) {
-                      setBestScore(currentScore);
-                    } 
+                    // if (currentScore > bestScore) {
+                    //   setBestScore(currentScore);
+                    // } 
 
         }
         )
