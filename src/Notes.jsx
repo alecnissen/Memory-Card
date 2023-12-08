@@ -217,3 +217,14 @@
 // reset the score, when game is over, but set whatever score you got for current and make that the best score. 
 
 // 
+
+// *** 12/8
+// goal is to make sure that when the player has lost that the current score is not being implemented, 
+// play around with it some more, then ask if stuck, 
+
+// I am noticing that once the user loses, it will adds to the current score, 
+// when user loses, game stops and scores are final. 
+
+// should not be able to implement the score when the user has lost, 
+
+// 

@@ -17,6 +17,8 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
+  // let hasUserLost;
+
 
 
   // this will get printed when the game is over, 
@@ -26,7 +28,7 @@ function App() {
      <h1>Game Over, Play Again?</h1> 
      <label>How many cards for next game?</label>
      <input type="number" min="0" max="52"/>
-     <button>Restart </button>
+     <button>Restart</button>
      </>
    );
    };
@@ -72,52 +74,53 @@ function App() {
       }
     };
     getCards();
-  }, []);
+  }, []); 
 
-  function clickedCard(card) {
+
+  function handleCardClick(card) {
     let selectedCard = card;
+    clickedCardsArray(selectedCard);
+    shuffleCards();
+    determineLosingConditions(selectedCard);
+    if (!hasUserLost) {
+      console.log(hasUserLost);
+      console.log('inside the handleCardClick conditional');
+      handleScoreChange();
+    }
+  }
 
-    // let usersSingleCard = usersPick; 
+  function determineLosingConditions(selectedCard) {
+    if (clickedCards.includes(selectedCard)) {
+      setHasUserLost(true);
+      setCurrentScore(0);
+      let cardContainer = document.getElementsByClassName('cards-container')[0];
+      cardContainer.remove();
+    }
+  }
+ 
+  function handleScoreChange() {
+
+    // setCurrentScore(currentScore + 1);
+
+    const newScore = currentScore + 1;
+
+    setCurrentScore(newScore);
+
+    setBestScore(newScore);
+  }
+
+  function clickedCardsArray(card) {
+    let selectedCard = card;
 
     // setting state of whatever card was clicked on. Adding clicked cards to the array, 
     setClickedCards([...clickedCards, selectedCard]);
 
-    console.log('THE CLICKED ON CARDS ARRAY,', clickedCards);
+  }
 
-    // if the clicked cards array contains the same card you clicked, game over and print message, 
-
-    // if (clickedCards.includes(usersPick)) {
-    //   // console.log('You clicked the same card twice');
-    //   alert('YOU CLICKED THE SAME CARD TWICE');
-    // }
-
+  function shuffleCards() {
     let shuffled = data.slice().sort(() => Math.random() - 0.5);
 
     setData(shuffled);
-
-
-    if (clickedCards.includes(selectedCard)) {
-      setHasUserLost(true);
-
-      setCurrentScore(0);
-
-      let cardContainer = document.getElementsByClassName('cards-container')[0];
-      cardContainer.remove();
-    }
-
-    if (currentScore > bestScore) {
-      setBestScore(currentScore);
-    }
-
-
-    // clickedCards.map((card) => {
-    //   if (clickedCards)
-    // })
-
-    // if (clickedCards.includes(selectedCard)) {
-    //   alert('you clicked a duplicate card!');
-    //   // losingMsg = 'Game Over! Play again?';
-    // }
   }
 
   return (
@@ -129,29 +132,8 @@ function App() {
           {data.map((item) => {
             return <div key={item.code} className="card-container"> 
                 <img src={item.image} onClick={((e) => {
-                    clickedCard(e.target.src);
-
-                    setCurrentScore(currentScore + 1);
-
-                    const newScore = currentScore + 1 
-
-                    setCurrentScore(newScore);
-
-                    setBestScore(newScore)
-
-
-                    // if (clickedCards.includes(e.target.src)) {
-                    //   setHasUserLost(true);
-
-                    //   setCurrentScore(0);
-          
-                    //   let cardContainer = document.getElementsByClassName('cards-container')[0];
-                    //   cardContainer.remove();
-                    // }
-
-                    // if (currentScore > bestScore) {
-                    //   setBestScore(currentScore);
-                    // } 
+                    // when called this will add cards to the clickedCards array,
+                    handleCardClick(e.target.src);
 
         }
         )
