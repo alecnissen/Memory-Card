@@ -238,3 +238,5 @@
 // but I am not getting the behavior I expect, my player lost module is being printed to the screen and the score is not incremeneting at all. 
 
 // I am confused on how to make this work.
+
+// *** missing in props validation error, 

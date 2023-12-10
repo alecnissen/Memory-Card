@@ -4,6 +4,9 @@ import HeaderText from './Header';
 import CardComponent from './CardComponent';
 import axios from "axios"
 import PropTypes from 'prop-types';
+import ErrorComponent from './ErrorComponent';
+import LoadingComponent from './LoadingComponent';
+import LosingComponent from './LosingComponent';
 
 function App() {
   const [data, setData] = useState([]);
@@ -22,22 +25,23 @@ function App() {
 
 
   // this will get printed when the game is over, 
-  let losingComponent = () => {
-    return (
-      <>
-     <h1>Game Over, Play Again?</h1> 
-     <label>How many cards for next game?</label>
-     <input type="number" min="0" max="52"/>
-     <button onClick={(() => { 
-      console.log('you clicked the restart btn for a new game');
-      // how will you capture the value that the user enters in the input field? 
-      // state variable? Then retrieve it
-      // This is where we want to make another fetch call, and render based on how many cards the user selects
-      // useEffect is probably going to go into here, because this will happen on the click,
-     })}>Restart</button>
-     </>
-   );
-   };
+  // let losingComponent = () => {
+
+  //   return (
+  //     <>
+  //    <h1>Game Over, Play Again?</h1> 
+  //    <label>How many cards for next game?</label>
+  //    <input type="number" min="0" max="52"/>
+  //    <button onClick={(() => { 
+  //     console.log('you clicked the restart btn for a new game');
+  //     // how will you capture the value that the user enters in the input field? 
+  //     // state variable? Then retrieve it
+  //     // This is where we want to make another fetch call, and render based on how many cards the user selects
+  //     // useEffect is probably going to go into here, because this will happen on the click,
+  //    })}>Restart</button>
+  //    </>
+  //  );
+  //  };
 
   console.log('data before set', data);
 
@@ -113,11 +117,10 @@ function App() {
 
       // this is the problem here,
       setHasUserLost(true);
-      
 
       setCurrentScore(0);
-      let cardContainer = document.getElementsByClassName('cards-container')[0];
-      cardContainer.remove();
+      // let cardContainer = document.getElementsByClassName('cards-container')[0];
+      // cardContainer.remove();
       return true;
     }
     return false;
@@ -171,37 +174,22 @@ function App() {
 
   // use a conditional to render the card container,
 
+  // function removeCardContainer() { 
+  //   let cardContainer = document.getElementsByClassName('cards-container')[0];
+  //   cardContainer.remove();
+  // }
+
   return (
     <>
-      <HeaderText currentScore={currentScore} bestScore={bestScore}></HeaderText>
-      <div className="main-card-container"> 
+      <HeaderText currentScore={currentScore} bestScore={bestScore}></HeaderText> 
 
-        <div className="cards-container"> 
-          {data.map((item) => {
-            return <div key={item.code} className="card-container"> 
-                <img src={item.image} onClick={((e) => {
-                    // when called this will add cards to the clickedCards array,
-                    handleCardClick(e.target.src);
+      {!hasUserLost && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>}
 
-        }
-        )
-        } 
-        />
-              </div>
-      })}
+      {error && <ErrorComponent error={error}></ErrorComponent>}
 
+      {loading && <LoadingComponent></LoadingComponent>}
 
-        </div>
-        </div>
-
-      {<div className="error-styles">{error}</div>}
-      {loading && <h1 className="loading-styles">Loading...</h1>}
-      {<div className="losing-msg-container">
-        
-          {hasUserLost && losingComponent()}
-
-        </div>
-      }
+      {hasUserLost && <LosingComponent></LosingComponent>}
     </>
   );
 }
