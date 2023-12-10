@@ -28,7 +28,13 @@ function App() {
      <h1>Game Over, Play Again?</h1> 
      <label>How many cards for next game?</label>
      <input type="number" min="0" max="52"/>
-     <button>Restart</button>
+     <button onClick={(() => { 
+      console.log('you clicked the restart btn for a new game');
+      // how will you capture the value that the user enters in the input field? 
+      // state variable? Then retrieve it
+      // This is where we want to make another fetch call, and render based on how many cards the user selects
+      // useEffect is probably going to go into here, because this will happen on the click,
+     })}>Restart</button>
      </>
    );
    };
@@ -74,33 +80,54 @@ function App() {
       }
     };
     getCards();
-  }, []); 
+  }, []);
 
+  // useEffect(() => {
+  //   setHasUserLost(true);
+  // }, [hasUserLost]);
+
+  // useEffect(() => {
+  //   if (!hasUserLost) {
+  //     handleScoreChange();
+  //   }
+  // }, [hasUserLost]);
 
   function handleCardClick(card) {
     let selectedCard = card;
+    console.log(selectedCard);
     clickedCardsArray(selectedCard);
     shuffleCards();
-    determineLosingConditions(selectedCard);
-    if (!hasUserLost) {
-      console.log(hasUserLost);
-      console.log('inside the handleCardClick conditional');
+    // determineLosingConditions(selectedCard);
+    // if (!hasUserLost) {
+    //   handleScoreChange();
+    // }
+    if (!determineLosingConditions(selectedCard)) {
       handleScoreChange();
     }
   }
 
+
   function determineLosingConditions(selectedCard) {
+
     if (clickedCards.includes(selectedCard)) {
+
+      // this is the problem here,
       setHasUserLost(true);
+      
+
       setCurrentScore(0);
       let cardContainer = document.getElementsByClassName('cards-container')[0];
       cardContainer.remove();
+      return true;
     }
+    return false;
   }
  
   function handleScoreChange() {
 
     // setCurrentScore(currentScore + 1);
+
+    console.log(hasUserLost);
 
     const newScore = currentScore + 1;
 
@@ -114,6 +141,7 @@ function App() {
 
     // setting state of whatever card was clicked on. Adding clicked cards to the array, 
     setClickedCards([...clickedCards, selectedCard]);
+    console.log(clickedCards);
 
   }
 
@@ -122,6 +150,26 @@ function App() {
 
     setData(shuffled);
   }
+
+
+
+  //  useEffect(() => {
+  //   setHasUserLost(true);
+  // }, [hasUserLost]);
+
+  // useEffect((selectedCard) => {
+  //   if (clickedCards.includes(selectedCard)) {
+
+  //     // this is the problem here,
+  //       setHasUserLost(true);
+
+  //       setCurrentScore(0);
+  //     let cardContainer = document.getElementsByClassName('cards-container')[0];
+  //       cardContainer.remove();
+  //   }
+  // },[hasUserLost]);
+
+  // use a conditional to render the card container,
 
   return (
     <>

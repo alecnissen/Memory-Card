@@ -228,3 +228,13 @@
 // should not be able to implement the score when the user has lost, 
 
 // 
+
+
+// *** useEffect async call, 
+// the problem is my state is being updated but the value won't change till re-render so user can still increment score when user has lost. 
+
+// i've tried to put my setting the hasUserLost variable within a useEffect function, as well as running in the effect each time hasUserLost variable is changed 
+
+// but I am not getting the behavior I expect, my player lost module is being printed to the screen and the score is not incremeneting at all. 
+
+// I am confused on how to make this work.
