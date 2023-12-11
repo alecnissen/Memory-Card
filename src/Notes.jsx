@@ -240,3 +240,9 @@
 // I am confused on how to make this work.
 
 // *** missing in props validation error, 
+
+
+// *** 
+// once game is over, fetching a new batch of cards based on user input, 
+// you got user value now plug that value into the fetch api call. 
+// console.log the results you get 

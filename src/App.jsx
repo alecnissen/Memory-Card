@@ -14,34 +14,12 @@ function App() {
   const [loading, setLoading] = useState(false);
   // the clicked on cards array
   const [clickedCards, setClickedCards] = useState([]);
-  // the single selected card, the users choice, if this card is clicked twice game over. 
-  // const [userPick, setUserPick] = useRef();
   const [hasUserLost, setHasUserLost] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-
-  // let hasUserLost;
-
+  const [userCardInput, setUserCardInput] = useState('');
 
 
-  // this will get printed when the game is over, 
-  // let losingComponent = () => {
-
-  //   return (
-  //     <>
-  //    <h1>Game Over, Play Again?</h1> 
-  //    <label>How many cards for next game?</label>
-  //    <input type="number" min="0" max="52"/>
-  //    <button onClick={(() => { 
-  //     console.log('you clicked the restart btn for a new game');
-  //     // how will you capture the value that the user enters in the input field? 
-  //     // state variable? Then retrieve it
-  //     // This is where we want to make another fetch call, and render based on how many cards the user selects
-  //     // useEffect is probably going to go into here, because this will happen on the click,
-  //    })}>Restart</button>
-  //    </>
-  //  );
-  //  };
 
   console.log('data before set', data);
 
@@ -86,98 +64,88 @@ function App() {
     getCards();
   }, []);
 
-  // useEffect(() => {
-  //   setHasUserLost(true);
-  // }, [hasUserLost]);
 
-  // useEffect(() => {
-  //   if (!hasUserLost) {
-  //     handleScoreChange();
-  //   }
-  // }, [hasUserLost]);
+  // useEffect which will render a certain amount of cards based on whatever the user enters for input 
+
+  useEffect(() => {
+
+    // async API call, to get cards that user entered for new game
+    const getInputCards = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`
+        );
+        setData(response.data.cards);
+        console.log('card array for userInput ', data);
+      } catch (error) { 
+        if (error.response) { 
+            // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+      // this one is hit
+      setError('Server responded with ' + ' ' + error.response.status + ' ' + 'error');
+
+        } else if (error.request) {
+          // IF THIS BLOCK IS HIT THE PAGE CRASHES
+          // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request);
+      setError(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          // this one is hit,
+      console.log('Error', error.message);
+      setError(error.message);
+        }
+        // this one is hit 
+        console.log(error.config);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getInputCards();
+  }, [userCardInput]);
 
   function handleCardClick(card) {
     let selectedCard = card;
     console.log(selectedCard);
     clickedCardsArray(selectedCard);
     shuffleCards();
-    // determineLosingConditions(selectedCard);
-    // if (!hasUserLost) {
-    //   handleScoreChange();
-    // }
     if (!determineLosingConditions(selectedCard)) {
       handleScoreChange();
     }
   }
 
-
   function determineLosingConditions(selectedCard) {
-
     if (clickedCards.includes(selectedCard)) {
-
-      // this is the problem here,
       setHasUserLost(true);
-
       setCurrentScore(0);
-      // let cardContainer = document.getElementsByClassName('cards-container')[0];
-      // cardContainer.remove();
       return true;
     }
     return false;
   }
  
   function handleScoreChange() {
-
-    // setCurrentScore(currentScore + 1);
-
     console.log(hasUserLost);
-
     const newScore = currentScore + 1;
-
     setCurrentScore(newScore);
-
     setBestScore(newScore);
   }
 
   function clickedCardsArray(card) {
     let selectedCard = card;
-
-    // setting state of whatever card was clicked on. Adding clicked cards to the array, 
     setClickedCards([...clickedCards, selectedCard]);
     console.log(clickedCards);
-
   }
 
   function shuffleCards() {
     let shuffled = data.slice().sort(() => Math.random() - 0.5);
-
     setData(shuffled);
   }
-
-
-
-  //  useEffect(() => {
-  //   setHasUserLost(true);
-  // }, [hasUserLost]);
-
-  // useEffect((selectedCard) => {
-  //   if (clickedCards.includes(selectedCard)) {
-
-  //     // this is the problem here,
-  //       setHasUserLost(true);
-
-  //       setCurrentScore(0);
-  //     let cardContainer = document.getElementsByClassName('cards-container')[0];
-  //       cardContainer.remove();
-  //   }
-  // },[hasUserLost]);
-
-  // use a conditional to render the card container,
-
-  // function removeCardContainer() { 
-  //   let cardContainer = document.getElementsByClassName('cards-container')[0];
-  //   cardContainer.remove();
-  // }
 
   return (
     <>
@@ -189,23 +157,9 @@ function App() {
 
       {loading && <LoadingComponent></LoadingComponent>}
 
-      {hasUserLost && <LosingComponent></LosingComponent>}
+      {hasUserLost && <LosingComponent userCardInput={userCardInput} setUserCardInput={setUserCardInput}></LosingComponent>}
     </>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-// async function getCards() {
-//   await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10").then((resp) => { 
-//   setData(resp.data.cards);
-  
-
-// },);
-//   } 
