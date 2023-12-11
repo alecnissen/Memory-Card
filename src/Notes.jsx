@@ -251,3 +251,19 @@
 
 
 // refactor the state variable to hold a default value of 10, then pass the user input into the API call, 
+
+// *** 
+
+// try to figure out the conditional rendering, just find a way to now show the losing component, when user enters new set of cards. 
+// 
+
+// empty the clicked cards array, once game is over, 
+
+
+// I am running into a problem with conditionally rendering components, 
+// game ends, user can enter # of cards for new game, it will render them to the screen but my losing component is still being displayed, 
+// I am getting confused on my conditionals, it seems like my values are flipped, 
+// hasUserLost variable starts at false, but when a card is clicked twice the value then changes to true, 
+
+// yet to render the cards I have to flip the value in order to get it to render, 
+// same with the losign component, I Have to flip the value for it to render. 

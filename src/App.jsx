@@ -17,9 +17,7 @@ function App() {
   const [hasUserLost, setHasUserLost] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [userCardInput, setUserCardInput] = useState('');
-
-
+  const [userCardInput, setUserCardInput] = useState(10);
 
   console.log('data before set', data);
 
@@ -29,7 +27,7 @@ function App() {
     const getCards = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://www.deckofcardsapi.com/api/deck/new/draw/?count=10");
+        const response = await axios.get(`https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`);
         setData(response.data.cards);
         console.log('card array ', data)
       } catch (error) { 
@@ -62,7 +60,7 @@ function App() {
       }
     };
     getCards();
-  }, []);
+  }, [userCardInput]); // put userCardInput in the depends array, whenever the value in it changes the effect will be ran again, 
 
 
   // useEffect which will render a certain amount of cards based on whatever the user enters for input 
@@ -123,6 +121,7 @@ function App() {
   function determineLosingConditions(selectedCard) {
     if (clickedCards.includes(selectedCard)) {
       setHasUserLost(true);
+      // empty the clicked cards array here
       setCurrentScore(0);
       return true;
     }
@@ -145,7 +144,14 @@ function App() {
   function shuffleCards() {
     let shuffled = data.slice().sort(() => Math.random() - 0.5);
     setData(shuffled);
-  }
+  } 
+
+  // how can we conditionally render the new set of cards, 
+  // already have conditionals if the user has lost and not lost, 
+  // if the user hasLost but the input has a new value then render the card component. 
+
+  // values seem flipped, when true it renders card component, 
+  // when false it renders the losing component. 
 
   return (
     <>
@@ -157,9 +163,17 @@ function App() {
 
       {loading && <LoadingComponent></LoadingComponent>}
 
-      {hasUserLost && <LosingComponent userCardInput={userCardInput} setUserCardInput={setUserCardInput}></LosingComponent>}
+      {hasUserLost && <LosingComponent userCardInput={userCardInput} setUserCardInput={setUserCardInput} hasUserLost={hasUserLost} setHasUserLost={setHasUserLost}></LosingComponent>}
+
+      {userCardInput !== 10 && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>} 
+
     </>
   );
 }
 
-export default App;
+export default App; 
+
+
+// if the user has not lost, and the card input is not the default value, then render the card component and but remove the losing component, 
+
+// just find a way to remove the losing component, 
