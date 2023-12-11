@@ -67,48 +67,48 @@ function App() {
 
   // useEffect which will render a certain amount of cards based on whatever the user enters for input 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    // async API call, to get cards that user entered for new game
-    const getInputCards = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(
-          `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`
-        );
-        setData(response.data.cards);
-        console.log('card array for userInput ', data);
-      } catch (error) { 
-        if (error.response) { 
-            // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-      // this one is hit
-      setError('Server responded with ' + ' ' + error.response.status + ' ' + 'error');
+  //   // async API call, to get cards that user entered for new game
+  //   const getInputCards = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await axios.get(
+  //         `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`
+  //       );
+  //       setData(response.data.cards);
+  //       console.log('card array for userInput ', data);
+  //     } catch (error) { 
+  //       if (error.response) { 
+  //           // The request was made and the server responded with a status code
+  //     // that falls out of the range of 2xx
+  //     console.log(error.response.data);
+  //     console.log(error.response.status);
+  //     console.log(error.response.headers);
+  //     // this one is hit
+  //     setError('Server responded with ' + ' ' + error.response.status + ' ' + 'error');
 
-        } else if (error.request) {
-          // IF THIS BLOCK IS HIT THE PAGE CRASHES
-          // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
-      console.log(error.request);
-      setError(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          // this one is hit,
-      console.log('Error', error.message);
-      setError(error.message);
-        }
-        // this one is hit 
-        console.log(error.config);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getInputCards();
-  }, [userCardInput]);
+  //       } else if (error.request) {
+  //         // IF THIS BLOCK IS HIT THE PAGE CRASHES
+  //         // The request was made but no response was received
+  //     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+  //     // http.ClientRequest in node.js
+  //     console.log(error.request);
+  //     setError(error.request);
+  //       } else {
+  //         // Something happened in setting up the request that triggered an Error
+  //         // this one is hit,
+  //     console.log('Error', error.message);
+  //     setError(error.message);
+  //       }
+  //       // this one is hit 
+  //       console.log(error.config);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getInputCards();
+  // }, [userCardInput]);
 
   function handleCardClick(card) {
     let selectedCard = card;

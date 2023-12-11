@@ -13,6 +13,8 @@ export default function LosingComponent({ userCardInput, setUserCardInput }) {
 
         console.log(userCardInput);
 
+        // getCards()
+
      })}>Restart</button>
 
       </div>
