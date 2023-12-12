@@ -11,47 +11,19 @@ export default function LosingComponent({ userCardInput, setUserCardInput, hasUs
         <h1>Game Over, Play Again?</h1> 
      <label>How many cards for next game?</label>
      <input type="number" min="0" max="52" onChange={e => newValue = e.target.value}/>
-     <button onClick={(() => {  
+     <button onClick={(() => {
 
-        // make a variable then set the state here? 
+         setUserCardInput(newValue);
 
-        // setUserCardInput(e.target.value)
+            setHasUserLost(false);
 
-        // when this btn is clicked it should also clear the clicked on cards array, 
+            newValue = '';
 
-        setUserCardInput(newValue);
+            setClickedCards([]);
 
-        setHasUserLost(false);
-
-        newValue = '';
-
-        setClickedCards([]);
-
-        console.log(bestScore);
-
-        // setClickedCards([]);
-
-        console.log(userCardInput);
-
-        console.log(hasUserLost); // user has lost still, so it will print the losing component. 
-
-        // print the card component again, since the value has changed, 
-
-        // once clicked the value will set, 
-
-        // In the input field, we are getting a certain amount of cards, 
-        // when the restart btn is pressed, set the new number of cards to the data variable, 
-        // 
-
-        // getCards()
-
-     })}>Restart</button>
+    })}>Restart</button>
 
       </div>
-        
-        </>
-    )
-} 
-
-
-// onChange={e => setUserCardInput(e.target.value)}
+    </>
+  );
+}
