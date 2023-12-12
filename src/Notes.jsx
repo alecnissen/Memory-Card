@@ -279,3 +279,17 @@
 // make it render the highest score, 
 // highest score is just getting set over by current score 
 // 
+
+// Remove commented out code, play around with it to make sure there are no obvious bugs, 
+// push latest changes 
+// start to use bootstrap, do not deploy until bootstrap is ready to go. 
+// remove lint errors. 
+// 
+
+// *** 12/12 
+// next I will go through and test the game again, 
+// looking for any odd behavior, // no odd behavior noticed, clicked cards array is being cleared, score is incrementing ok
+// then I will remove any commented out code, 
+// then I will remove the lint errors. 
+
+
