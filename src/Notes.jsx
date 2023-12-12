@@ -267,3 +267,15 @@
 
 // yet to render the cards I have to flip the value in order to get it to render, 
 // same with the losign component, I Have to flip the value for it to render. 
+
+// make sure to clear the clicked cards array when user presses restart, 
+// that way each round has unique cards being played. 
+
+// clicked cards is all good, 
+// now make sure game can keep track of highest score, 
+// now highest score is getting replaced by the current score, 
+
+// highest score is being persisted across rounds, 
+// make it render the highest score, 
+// highest score is just getting set over by current score 
+// 

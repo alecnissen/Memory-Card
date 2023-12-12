@@ -14,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   // the clicked on cards array
   const [clickedCards, setClickedCards] = useState([]);
+  // changed has user lost to '' instead of false,
   const [hasUserLost, setHasUserLost] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -129,16 +130,24 @@ function App() {
   }
  
   function handleScoreChange() {
-    console.log(hasUserLost);
+    
+    // console.log(hasUserLost);
     const newScore = currentScore + 1;
     setCurrentScore(newScore);
-    setBestScore(newScore);
+    
+    if (newScore > bestScore) {
+      setBestScore(newScore);
+    }
+    // setBestScore(newScore);
+    
+    console.log('best score variable within handleScoreChange', bestScore);
+    
   }
 
   function clickedCardsArray(card) {
     let selectedCard = card;
     setClickedCards([...clickedCards, selectedCard]);
-    console.log(clickedCards);
+    console.log('clicked card array within clickedCards function', clickedCards);
   }
 
   function shuffleCards() {
@@ -163,9 +172,9 @@ function App() {
 
       {loading && <LoadingComponent></LoadingComponent>}
 
-      {hasUserLost && <LosingComponent userCardInput={userCardInput} setUserCardInput={setUserCardInput} hasUserLost={hasUserLost} setHasUserLost={setHasUserLost}></LosingComponent>}
+      {hasUserLost && <LosingComponent userCardInput={userCardInput} setUserCardInput={setUserCardInput} hasUserLost={hasUserLost} setHasUserLost={setHasUserLost} setClickedCards={setClickedCards} bestScore={bestScore}></LosingComponent>}
 
-      {userCardInput !== 10 && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>} 
+      {/* {userCardInput !== 10 && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>}  */}
 
     </>
   );

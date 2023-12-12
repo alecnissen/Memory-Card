@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import App from "./App";
 import PropTypes from 'prop-types';
 
-export default function LosingComponent({ userCardInput, setUserCardInput, hasUserLost, setHasUserLost }) {
+export default function LosingComponent({ userCardInput, setUserCardInput, hasUserLost, setHasUserLost, setClickedCards, bestScore }) {
     let newValue;
 
     return ( 
@@ -19,9 +19,17 @@ export default function LosingComponent({ userCardInput, setUserCardInput, hasUs
 
         // when this btn is clicked it should also clear the clicked on cards array, 
 
-        setUserCardInput(newValue);    
+        setUserCardInput(newValue);
 
-        // setHasUserLost(false);
+        setHasUserLost(false);
+
+        newValue = '';
+
+        setClickedCards([]);
+
+        console.log(bestScore);
+
+        // setClickedCards([]);
 
         console.log(userCardInput);
 
