@@ -319,3 +319,12 @@
 
 // play around with the mobile version, possibly make the cards smaller, 
 // get the process for using btns, colors in bootstrap.
+
+// bootstrap btn is working, 
+// see if you can place the btn below the label and input field, it will look better, 
+
+
+// the font looks fine, maybe just increase the width of the card container, 
+// I think everything looks fine, look at it, one more time, commit changes, and begin deployment. 
+
+// *** finish eslint/prettier errors;

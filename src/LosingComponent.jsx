@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import App from "./App";
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 // two state values, 
 
@@ -12,34 +13,26 @@ export default function LosingComponent({ userCardInput, setUserCardInput, hasUs
         <div className="losing-msg-container">
         <h1>Game Over, Play Again?</h1> 
      <label>How many cards for next game?</label>
-     <input type="number" min="0" max="52" required defaultValue={userCardInput} onChange={e => setValue(e.target.value)}/>
-     <button onClick={(() => {
+     <input type="number" min="0" max="52" className="card-input-field" required defaultValue={userCardInput} onChange={e => setValue(e.target.value)}/>
+     
 
-        // if (value === null) { 
-        //     setUserCardInput(userCardInput);
-        // }
+      </div> 
 
+      <div className="restart-btn-flex-container">
 
-            console.log(userCardInput);
-
-            console.log(value);
-            
-        //    clickHandler();
-
-        // console.log(newValue);
-
+     <Button id="restart-btn-losing-component" variant="primary" size="lg" onClick={(() => {
          setUserCardInput(value);
+         setHasUserLost(false);
+         setClickedCards([]);
+    })}>Restart</Button>
+
+    </div>
 
 
-            setHasUserLost(false);
 
-            // newValue = '';
 
-            setClickedCards([]);
 
-    })}>Restart</button>
 
-      </div>
     </>
   );
 } 

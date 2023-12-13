@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Crete+Round&family=Montserrat:wght@200;500&family=Playfair+Display+SC:ital@1&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Crete+Round&family=Montserrat:wght@200;500&family=Playfair+Display+SC:ital@1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Crete+Round&family=Montserrat:wght@200;500&family=Play:wght@700&family=Playfair+Display+SC:ital@1&display=swap');
 /* import Button from 'react-bootstrap/Button'; */
 
 * { 
   box-sizing: border-box;
   padding: 0; 
   margin: 0;
-  font-family: 'Crete Round', serif;
+  /* font-family: 'Crete Round', serif; */
+  font-family: 'Play', sans-serif;
 } 
 
 body { 
-  background: rgb(112,109,12);
+  /* background: rgb(112,109,12); */
   background: linear-gradient(90deg, rgba(112,109,12,1) 0%, rgba(65,190,88,1) 32%, rgba(0,255,81,1) 100%);
 }
 
@@ -42,6 +44,7 @@ body {
 .main-card-container { 
   margin: 0 auto;
   max-width: 80em;
+  /* padding: 5px; */
 }
 
 
@@ -50,7 +53,7 @@ body {
   grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
   width: 100%;
   gap: 1.5em;
-  padding: 1em;
+  padding: 2em;
 } 
 
 .error-styles, 
@@ -60,11 +63,42 @@ body {
   font-weight: bold;
   text-align: center;
   font-size: 2rem;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 } 
 
+#restart-btn-losing-component { 
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+  background-color: white;
+  color: black;
+} 
 
-@media (max-width: 480px) { 
+#restart-btn-losing-component:hover { 
+  background-color: darkgreen;
+  color: white;
+}
+
+.restart-btn-flex-container { 
+  display: flex;
+  justify-content: center;
+} 
+
+.card-input-field { 
+  border-radius: 20%;
+  border: 3px solid black;
+  text-align: center;
+}
+
+ /* .losing-msg-container Button { 
+   display: block;
+   /* text-align: center; */
+  
+/* }  */
+
+
+
+@media (max-width: 500px) { 
   .main-card-container { 
     display: flex;
     max-width: 20em;
@@ -76,7 +110,7 @@ body {
   }
 } 
 
-@media (max-width: 694px) { 
+@media (max-width: 735px) { 
   .main-card-container { 
     /* max-width: 20em; */
     text-align: center;
