@@ -5,8 +5,8 @@ import React from "react";
 // make a function which includes title and subtitle which includes directions, 
 
 export default function HeaderText({ currentScore, bestScore }) { 
-    console.log(currentScore);
-    console.log(bestScore);
+    // console.log(currentScore);
+    // console.log(bestScore);
 
     return ( 
         <> 

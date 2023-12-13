@@ -292,4 +292,23 @@
 // then I will remove any commented out code, 
 // then I will remove the lint errors. 
 
+// *** bootstrap 
+// only problem is vite config, when I put in what they have I receive error, dynamic require of path is not supported. 
 
+// wait for the response back, on the installation code 
+
+// in the meantime work on getting the default input value to display. 
+
+// why is it when input value is set, that I am unable to change its value when trying to enter a new batch of cards. 
+
+
+
+
+// ***
+
+// *** 12/13 bring back default settings in the config file, 
+// remove the JS and scss files. 
+// run the commands again, and begin to see how you can refactor the styles. 
+
+// check the old config file,
+// remove the script tag from html, 

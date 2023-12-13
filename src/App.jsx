@@ -16,7 +16,16 @@ function App() {
   const [hasUserLost, setHasUserLost] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [value, setValue] = useState(10);
   const [userCardInput, setUserCardInput] = useState(10);
+
+  // function clickHandler(e) {
+  //   if (value === null) { 
+  //     setValue(userCardInput);
+  //   }
+
+  //   setValue(e.target.value);
+  // }
 
   useEffect(() => {
     const getCards = async () => {
@@ -25,8 +34,9 @@ function App() {
         const response = await axios.get(
           `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`
         );
+        console.log('userCardInput within useEffect', userCardInput);
         setData(response.data.cards);
-        console.log('card array ', data);
+        console.log('card array called within useEffect ', data);
       } catch (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -57,7 +67,7 @@ function App() {
 
   function handleCardClick(card) {
     let selectedCard = card;
-    console.log(selectedCard);
+    // console.log(selectedCard);
     clickedCardsArray(selectedCard);
     shuffleCards();
     if (!determineLosingConditions(selectedCard)) {
@@ -85,7 +95,7 @@ function App() {
   function clickedCardsArray(card) {
     let selectedCard = card;
     setClickedCards([...clickedCards, selectedCard]);
-    console.log('clicked card array within clickedCards function', clickedCards);
+    // console.log('clicked card array within clickedCards function', clickedCards);
   }
 
   function shuffleCards() {
@@ -108,7 +118,13 @@ function App() {
           hasUserLost={hasUserLost}
           setHasUserLost={setHasUserLost}
           setClickedCards={setClickedCards}
-          bestScore={bestScore}></LosingComponent>
+          value={value}
+          setValue={setValue}
+          bestScore={bestScore}
+          // clickHandler={clickHandler}
+          >
+        
+          </LosingComponent>
       )}
       {/* {userCardInput !== 10 && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>}  */}
     </>
