@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Crete+Round&family=Montserrat:wght@200;500&family=Playfair+Display+SC:ital@1&display=swap');
-
+/* import Button from 'react-bootstrap/Button'; */
 
 * { 
   box-sizing: border-box;
@@ -16,6 +16,7 @@ body {
 .header-container { 
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   /* justify-content: center; */
   justify-content: space-evenly;
   font-size: 1.5rem;
@@ -48,7 +49,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
   width: 100%;
-  gap: 1em;
+  gap: 1.5em;
   padding: 1em;
 } 
 
@@ -60,4 +61,24 @@ body {
   text-align: center;
   font-size: 2rem;
   text-decoration: underline;
+} 
+
+
+@media (max-width: 480px) { 
+  .main-card-container { 
+    display: flex;
+    max-width: 20em;
+    text-align: center;
+  }  
+
+  .card-container img { 
+    width: 50%;
+  }
+} 
+
+@media (max-width: 694px) { 
+  .main-card-container { 
+    /* max-width: 20em; */
+    text-align: center;
+  }  
 }

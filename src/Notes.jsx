@@ -312,3 +312,10 @@
 
 // check the old config file,
 // remove the script tag from html, 
+
+
+// *** mobile responsive, make the cards more center for smartphones, 
+// 480px set a max-width,
+
+// play around with the mobile version, possibly make the cards smaller, 
+// get the process for using btns, colors in bootstrap.
