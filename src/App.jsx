@@ -3,7 +3,6 @@ import './App.css';
 import HeaderText from './Header';
 import CardComponent from './CardComponent';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import ErrorComponent from './ErrorComponent';
 import LoadingComponent from './LoadingComponent';
 import LosingComponent from './LosingComponent';
@@ -18,14 +17,6 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [value, setValue] = useState(10);
   const [userCardInput, setUserCardInput] = useState(10);
-
-  // function clickHandler(e) {
-  //   if (value === null) { 
-  //     setValue(userCardInput);
-  //   }
-
-  //   setValue(e.target.value);
-  // }
 
   useEffect(() => {
     const getCards = async () => {
@@ -46,7 +37,6 @@ function App() {
           console.log(error.response.headers);
           setError('Server responded with ' + ' ' + error.response.status + ' ' + 'error');
         } else if (error.request) {
-          // IF THIS BLOCK IS HIT THE PAGE CRASHES
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
@@ -67,7 +57,6 @@ function App() {
 
   function handleCardClick(card) {
     let selectedCard = card;
-    // console.log(selectedCard);
     clickedCardsArray(selectedCard);
     shuffleCards();
     if (!determineLosingConditions(selectedCard)) {
@@ -95,7 +84,6 @@ function App() {
   function clickedCardsArray(card) {
     let selectedCard = card;
     setClickedCards([...clickedCards, selectedCard]);
-    // console.log('clicked card array within clickedCards function', clickedCards);
   }
 
   function shuffleCards() {
@@ -120,13 +108,8 @@ function App() {
           setClickedCards={setClickedCards}
           value={value}
           setValue={setValue}
-          bestScore={bestScore}
-          // clickHandler={clickHandler}
-          >
-        
-          </LosingComponent>
+          bestScore={bestScore}></LosingComponent>
       )}
-      {/* {userCardInput !== 10 && <CardComponent handleCardClick={handleCardClick} data={data}></CardComponent>}  */}
     </>
   );
 }

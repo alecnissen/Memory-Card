@@ -1,11 +1,9 @@
-import React from "react";
-import App from "./App";
-import PropTypes from 'prop-types';
+import React from 'react';
 
 export default function LoadingComponent() {
-    return ( 
-        <> 
-        <h1 className="loading-styles">Loading...</h1>
-        </>
-    )
+  return (
+    <>
+      <h1 className="loading-styles">Loading...</h1>
+    </>
+  );
 }
