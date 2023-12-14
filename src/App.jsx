@@ -18,19 +18,16 @@ function App() {
   const [value, setValue] = useState(10);
   const [userCardInput, setUserCardInput] = useState(10);
 
-  console.log('data before set', data);
-
   useEffect(() => {
     const getCards = async () => {
-      console.log('USE EFFECT CALLED!');
       setLoading(true);
       try {
         const response = await axios.get(
           `https://www.deckofcardsapi.com/api/deck/new/draw/?count=${userCardInput}`
         );
-        console.log('userCardInput within useEffect', userCardInput);
+        // console.log('userCardInput within useEffect', userCardInput);
         setData(response.data.cards);
-        console.log('card array called within useEffect ', data);
+        // console.log('card array called within useEffect ', data);
       } catch (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -56,7 +53,7 @@ function App() {
       }
     };
     getCards();
-  }, [userCardInput]);
+  }, [userCardInput, hasUserLost]);
 
   function handleCardClick(card) {
     let selectedCard = card;
@@ -90,7 +87,6 @@ function App() {
   }
 
   function shuffleCards() {
-    console.log('data within shuffle cards array', data);
     let shuffled = data.slice().sort(() => Math.random() - 0.5);
     setData(shuffled);
   }
@@ -112,7 +108,6 @@ function App() {
           setClickedCards={setClickedCards}
           value={value}
           setValue={setValue}
-          setData={setData}
           bestScore={bestScore}></LosingComponent>
       )}
     </>
@@ -120,7 +115,3 @@ function App() {
 }
 
 export default App;
-
-
-// play around with the behavior, if I don't enter a number, 10 is the default value which will be used for the cards, 
-// so useEffect is never used again to render new cards,

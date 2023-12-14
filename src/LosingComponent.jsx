@@ -7,8 +7,7 @@ export default function LosingComponent({
   setHasUserLost,
   setClickedCards,
   value,
-  setValue,
-  setData
+  setValue
 }) {
   return (
     <>
@@ -31,8 +30,6 @@ export default function LosingComponent({
           variant="primary"
           size="lg"
           onClick={() => {
-            console.log('log of value state variable', value); // 10
-            console.log('log of userCardInput state variable', userCardInput); // 10
             setUserCardInput(value);
             setHasUserLost(false);
             setClickedCards([]);
@@ -43,7 +40,3 @@ export default function LosingComponent({
     </>
   );
 }
-
-// fetch unqiue cards each time, 
-// useEffect does not fetch new cards because data stays the same,
-// not getting ran again, because if user enters nothing, data has not changed, 
