@@ -327,4 +327,6 @@
 // the font looks fine, maybe just increase the width of the card container, 
 // I think everything looks fine, look at it, one more time, commit changes, and begin deployment. 
 
+// used animation as well.
+
 // *** finish eslint/prettier errors;
