@@ -53,8 +53,10 @@ then ``` npm install ``` which will install all dependency's and packages.
 
 - Mobile responsive 
 
-<img src="Images/memory-card-readme-mobile-1.png" style="height: 300px">
+<div>
+<img src="Images/memory-card-readme-mobile-1.png" style="height: 300px"> 
 <img src="Images/memory-card-readme-mobile-2.png" style="height: 300px">
+</div>
 
 
 
