@@ -1,5 +1,5 @@
 <h1>About This Project</h1> 
-This was the second React project, as part of The Odin Project's course. I wanted to make this a portfolio piece because it highlights my ability to use REST API's to retrieve and use data from an external server. It also further increased my knowledge and experience in using React components, managing state, using effects, using short circuit conditionals to render data. Also using Axios to make API calls, along with handling errors and loading screens with the API calls.
+I wanted to make this a portfolio piece because it highlights my ability to use REST API's to retrieve and use data from an external server. It also showcases my skills and experience using React components, responsive UI design, state management, and short circuit conditionals to render data. In this project I used Axios to make API calls. I also wrote conditions to handle errors and loading screens within the API call conditions
 
 <br> 
 
@@ -16,10 +16,11 @@ This was the second React project, as part of The Odin Project's course. I wante
     </ul>
 <br> 
 
- <h1>Build With</h1>
+ <h1>Built With</h1>
 
  
  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
+ ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
