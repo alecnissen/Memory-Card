@@ -14,7 +14,7 @@ I wanted to make this a portfolio piece because it highlights my ability to use 
     <li>Applying basic animations to playing cards</li>
     <li>Using and gaining experience with Bootstrap components</li>
     </ul>
-<br> 
+<!-- <br>  -->
 
  <h1>Built With</h1>
 
